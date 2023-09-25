@@ -4,16 +4,18 @@ import { bubbleSort } from './alghotims/bubbleSort'
 import { maxArea } from './alghotims/highestVolume'
 import { bigArray, smallInput } from './inputs'
 
-// maxArea(input)
-// topKFrequent([1, 1, 1, 2, 2, 3], 2)
-// productExceptSelf([1, 2, 3, 4]) //[24,12,8,6]
+const path = './files/raw.txt'
 
-console.time()
-const bubbleRes = bubbleSort(bigArray)
-console.timeEnd()
+const file = Bun.file(path)
 
-console.time()
-const innateSort = bigArray.sort()
-console.timeEnd()
+const text = await file.text()
 
-// console.log('This is res', res)
+const names = text.split('\n').filter((el) => !el.startsWith('[<'))
+
+const mySet = new Set<string>(names)
+
+// console.log('This is names', names)
+
+console.log('This is mySet', mySet)
+
+// console.log('This is mySet', mySet)
